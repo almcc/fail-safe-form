@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Fail safe form</title>
+
+    <link rel="stylesheet" href="css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/vendor/chosen.css">
+
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="span3"></div>
+        <div class="span6">
+          <div class="page-header">
+            <h1>Fail Safe Form <small>.jquery.js</small></h1>
+          </div>
+        </div>
+        <div class="span3"></div>
+      </div>
+
+      <div class="row">
+        <div class="span3"></div>
+        <div class="span6">
+
+          <form class="form-horizontal" id="fail-safe-form">
+
+            <fieldset>
+              <legend>Text inputs</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="input-textbox">Textbox</label>
+                <div class="controls">
+                  <input type="text" id="input-textbox" placeholder="Textbox">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-password">Password</label>
+                <div class="controls">
+                  <input type="password" id="input-password">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-textarea">Textarea</label>
+                <div class="controls">
+                  <textarea rows="3" id="input-textarea" placeholder="Textarea"></textarea>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Selects</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="input-select">Select</label>
+                <div class="controls">
+                  <select id="input-select">
+                    <optgroup label="Weekdays">
+                      <option value="monday">Monday</option>
+                      <option value="tuesday">Tuesday</option>
+                      <option value="wednesday">Wednesday</option>
+                      <option value="thursday">Thursday</option>
+                      <option value="friday">Friday</option>
+                    </optgroup>
+                    <optgroup label="Weekend">
+                      <option value="saturday">Saturday</option>
+                      <option value="sunday">Sunday</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-multiple-select">Multiple Select</label>
+                <div class="controls">
+                  <select multiple="multiple" id="input-multiple-select">
+                    <optgroup label="Weekdays">
+                      <option value="monday">Monday</option>
+                      <option value="tuesday">Tuesday</option>
+                      <option value="wednesday">Wednesday</option>
+                      <option value="thursday">Thursday</option>
+                      <option value="friday">Friday</option>
+                    </optgroup>
+                    <optgroup label="Weekend">
+                      <option value="saturday">Saturday</option>
+                      <option value="sunday">Sunday</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-datalist">Datalist</label>
+                <div class="controls">
+                  <input list="datalist-reference" name="input-datalist">
+                  <datalist id="datalist-reference">
+                    <option value="Monday">
+                    <option value="Tuesday">
+                    <option value="Wednesday">
+                    <option value="Thursday">
+                    <option value="Friday">
+                    <option value="Saturday">
+                    <option value="Sunday">
+                  </datalist>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <!-- <fieldset>
+              <legend>Chosen Selects</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="input-chosen-select">Select</label>
+                <div class="controls">
+                  <select class="jq-chosen" id="input-chosen-select">
+                    <optgroup label="Weekdays">
+                      <option value="monday">Monday</option>
+                      <option value="tuesday">Tuesday</option>
+                      <option value="wednesday">Wednesday</option>
+                      <option value="thursday">Thursday</option>
+                      <option value="friday">Friday</option>
+                    </optgroup>
+                    <optgroup label="Weekend">
+                      <option value="saturday">Saturday</option>
+                      <option value="sunday">Sunday</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-multiple-chosen-select">Multiple Select</label>
+                <div class="controls">
+                  <select class="jq-chosen" multiple="multiple" id="input-multiple-chosen-select">
+                    <optgroup label="Weekdays">
+                      <option value="monday">Monday</option>
+                      <option value="tuesday">Tuesday</option>
+                      <option value="wednesday">Wednesday</option>
+                      <option value="thursday">Thursday</option>
+                      <option value="friday">Friday</option>
+                    </optgroup>
+                    <optgroup label="Weekend">
+                      <option value="saturday">Saturday</option>
+                      <option value="sunday">Sunday</option>
+                    </optgroup>
+                  </select>
+                </div>
+              </div>
+
+            </fieldset> -->
+
+            <fieldset>
+              <legend>Checks and Radios</legend>
+
+              <div class="control-group">
+                <label class="control-label">Checkbox</label>
+                <div class="controls">
+                  <label class="checkbox" for="input-checkbox-1">
+                    <input type="checkbox" value="input-checkbox-1" id="input-checkbox-1">
+                    Lorem ipsum dolor sit amet.
+                  </label>
+                  <label class="checkbox" for="input-checkbox-2">
+                    <input type="checkbox" value="input-checkbox-2" id="input-checkbox-2">
+                    Consectetur adipisicing elit.
+                  </label>
+                  <label class="checkbox" for="input-checkbox-3">
+                    <input type="checkbox" value="input-checkbox-3" id="input-checkbox-3">
+                    Sed do eiusmod tempor incididunt.
+                  </label>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Radio</label>
+                <div class="controls">
+                  <label class="radio" for="input-radio-1">
+                    <input type="radio" name="input-radio" value="input-radio-1" id="input-radio-1">
+                    Lorem ipsum dolor sit amet.
+                  </label>
+                  <label class="radio" for="input-radio-2">
+                    <input type="radio" name="input-radio" value="input-radio-2" id="input-radio-2">
+                    Consectetur adipisicing elit.
+                  </label>
+                  <label class="radio" for="input-radio-3">
+                    <input type="radio" name="input-radio" value="input-radio-3" id="input-radio-3">
+                    Sed do eiusmod tempor incididunt.
+                  </label>
+                </div>
+              </div>
+
+            </fieldset>
+
+            <fieldset>
+              <legend>HTML5 Inputs</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="input-color">Color</label>
+                <div class="controls">
+                  <input type="color" id="input-color">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-date">Date</label>
+                <div class="controls">
+                  <input type="date" id="input-date">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-datetime">Datetime</label>
+                <div class="controls">
+                  <input type="datetime" id="input-datetime">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-datetime-local">Datetime Local</label>
+                <div class="controls">
+                  <input type="datetime-local" id="input-datetime-local">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-email">Email</label>
+                <div class="controls">
+                  <input type="email" id="input-email">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-file">File</label>
+                <div class="controls">
+                  <input type="file" id="input-file">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-hidden">Hidden</label>
+                <div class="controls">
+                  <input type="hidden" id="input-hidden">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-image">Image</label>
+                <div class="controls">
+                  <input type="image" id="input-image">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-month">Month</label>
+                <div class="controls">
+                  <input type="month" id="input-month">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-number">Number</label>
+                <div class="controls">
+                  <input type="number" id="input-number">
+                </div>
+              </div>
+
+
+              <div class="control-group">
+                <label class="control-label" for="input-range">Range</label>
+                <div class="controls">
+                  <input type="range" id="input-range">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-search">Search</label>
+                <div class="controls">
+                  <input type="search" id="input-search">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-tel">Telephone</label>
+                <div class="controls">
+                  <input type="tel" id="input-tel">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-time">Time</label>
+                <div class="controls">
+                  <input type="time" id="input-time">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-url">URL</label>
+                <div class="controls">
+                  <input type="url" id="input-url">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="input-week">Week</label>
+                <div class="controls">
+                  <input type="week" id="input-week">
+                </div>
+              </div>
+
+            </fieldset>
+
+            <fieldset>
+              <legend>Controls</legend>
+
+              <div class="control-group">
+                <div class="controls">
+                  <input type="reset" id="input-reset">
+                  <input type="submit" id="input-submit">
+                </div>
+              </div>
+
+            </fieldset>
+
+          </form>
+
+        </div>
+        <div class="span3"></div>
+      </div>
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/vendor/chosen.jquery.js"></script>
+    <script src="js/fail-safe-form.jquery.js"></script>
+
+    <script type="text/javascript">
+
+      $(".jq-chosen").chosen();
+
+      $("#fail-safe-form").failSafeForm();
+
+    </script>
+
+
+  </body>
+</html>
