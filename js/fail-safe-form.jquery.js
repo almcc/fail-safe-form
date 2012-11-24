@@ -10,10 +10,10 @@
 
       var formId = $(possibleFormElement).attr("id");
 
-      var loadTextBox = function( textBox ){
-        var textBoxId = $(textBox).attr("id");
-        var text = localStorage.getItem(formId + "." + textBoxId);
-        $(textBox).attr("value", text);
+      var loadStandardInput = function( input ){
+        var inputId = $(input).attr("id");
+        var value = localStorage.getItem(formId + "." + inputId);
+        $(input).attr("value", value);
       };
 
       var loadCheckBox = function( checkBoxItem ){
@@ -57,18 +57,10 @@
       $(possibleFormElement).find("input").each(
         function(index, input) {
           switch($(input).attr("type")){
-            case "text":
-              loadTextBox( input );
-              $(input).on("blur", function(){
-                var textId = $(input).attr("id");
-                var textValue = $(input).attr("value");
-                localStorage.setItem(formId + "." + textId, textValue);
-              });
-            break;
 
             case "checkbox":
               loadCheckBox( input );
-              $(input).on("click", function(){
+              $(input).on("change", function(){
                 var checkBoxId = $(input).attr("id");
                 var checkBoxValue = $(input).attr("checked");
                 if(checkBoxValue == "checked"){
@@ -83,12 +75,22 @@
               // TODO : Could be improved, this will be called once
               // for every option, It only need to be called once.
               loadRadio( input );
-              $(input).on("click", function(){
+              $(input).on("change", function(){
                 var radioName = $(input).attr("name");
                 var radioId = $(input).attr("id");
                 localStorage.setItem(formId + "." + radioName, radioId);
               });
             break;
+
+            default:
+              loadStandardInput( input );
+              $(input).on("change", function(){
+                var inputId = $(input).attr("id");
+                var inputValue = $(input).attr("value");
+                localStorage.setItem(formId + "." + inputId, inputValue);
+              });
+            break;
+
           }
         }
       );

@@ -12,25 +12,24 @@ Supported form elements so far
  - multiple selects
  - check boxes
  - radio buttons
-
-Still to come ...
------------------
-
  - Color input
  - Date input
  - Datetime input
  - Datetime Local input
  - Email input
- - File input
- - Image input
  - Month input
  - Number input
  - Range input
  - Search input
  - Telephone input
- - Time input
  - URL input
  - Week input
+
+Still to come ...
+-----------------
+
+ - File input
+ - Time input
 
 Future Plans
 ------------
