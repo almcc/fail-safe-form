@@ -6,75 +6,75 @@
       'validate' : false
     }, options);
 
-    return this.each(function(index, element) {
+    return this.each(function(index, possibleFormElement) {
 
-      var formId = $(element).attr("id");
+      var formId = $(possibleFormElement).attr("id");
 
-      var loadTextBox = function( element ){
-        var elementId = $(element).attr("id");
-        var elementValue = localStorage.getItem(formId + "." + elementId);
-        $(element).attr("value", elementValue);
+      var loadTextBox = function( textBox ){
+        var textBoxId = $(textBox).attr("id");
+        var text = localStorage.getItem(formId + "." + textBoxId);
+        $(textBox).attr("value", text);
       };
 
-      var loadCheckBox = function( element ){
-        var elementId = $(element).attr("id");
-        var elementValue = localStorage.getItem(formId + "." + elementId);
-        if(elementValue == "true"){
-          $(element).attr("checked","checked");
+      var loadCheckBox = function( checkBoxItem ){
+        var checkBoxId = $(checkBoxItem).attr("id");
+        var isChecked = localStorage.getItem(formId + "." + checkBoxId);
+        if(isChecked == "true"){
+          $(checkBoxItem).attr("checked","checked");
         } else {
-          $(element).removeAttr("checked");
+          $(checkBoxItem).removeAttr("checked");
         }
       };
 
-      var loadRadio = function( element ){
-        var elementId = $(element).attr("name");
-        var elementValue = localStorage.getItem(formId + "." + elementId);
-        $("#" + elementValue).attr("checked","checked");
+      var loadRadio = function( radioPart ){
+        var radioSetName = $(radioPart).attr("name");
+        var radioPartId = localStorage.getItem(formId + "." + radioSetName);
+        $("#" + radioPartId).attr("checked","checked");
       };
 
-      var loadTextArea = function( element ){
-        var elementId = $(element).attr("id");
-        var elementValue = localStorage.getItem(formId + "." + elementId);
-        $(element).attr("value", elementValue);
+      var loadTextArea = function( textArea ){
+        var textAreaId = $(textArea).attr("id");
+        var textAreaValue = localStorage.getItem(formId + "." + textAreaId);
+        $(textArea).attr("value", textAreaValue);
       };
 
-      var loadSelect = function ( element ){
-        var elementId = $(element).attr("id");
-        var elementValue = localStorage.getItem(formId + "." + elementId);
-        $(element).find('option[value="' + elementValue + '"]').attr("selected", "selected");
+      var loadSelect = function ( selectBox ){
+        var selectId = $(selectBox).attr("id");
+        var selectedValue = localStorage.getItem(formId + "." + selectId);
+        $(selectBox).find('option[value="' + selectedValue + '"]').attr("selected", "selected");
       };
 
-      var loadMultipleSelect = function ( element ){
-        var elementId = $(element).attr("id");
-        var elementValue = localStorage.getItem(formId + "." + elementId);
-        var elementValues = JSON.parse(elementValue);
-        for( var i=0; i<elementValues.length; i++){
-          var value = elementValues[i];
-          $(element).find('option[value="' + value + '"]').attr("selected", "selected");
+      var loadMultipleSelect = function ( multipleSelectBox ){
+        var selectId = $(multipleSelectBox).attr("id");
+        var selectedValuesString = localStorage.getItem(formId + "." + selectId);
+        var selectedValues = JSON.parse(selectedValuesString);
+        for( var i=0; i<selectedValues.length; i++){
+          var value = selectedValues[i];
+          $(multipleSelectBox).find('option[value="' + value + '"]').attr("selected", "selected");
         }
       };
 
-      $(element).find("input").each(
-        function(index, element) {
-          switch($(element).attr("type")){
+      $(possibleFormElement).find("input").each(
+        function(index, input) {
+          switch($(input).attr("type")){
             case "text":
-              loadTextBox( element );
-              $(element).on("blur", function(){
-                var elementId = $(element).attr("id");
-                var elementValue = $(element).attr("value");
-                localStorage.setItem(formId + "." + elementId, elementValue);
+              loadTextBox( input );
+              $(input).on("blur", function(){
+                var textId = $(input).attr("id");
+                var textValue = $(input).attr("value");
+                localStorage.setItem(formId + "." + textId, textValue);
               });
             break;
 
             case "checkbox":
-              loadCheckBox( element );
-              $(element).on("click", function(){
-                var elementId = $(element).attr("id");
-                var elementValue = $(element).attr("checked");
-                if(elementValue == "checked"){
-                  localStorage.setItem(formId + "." + elementId, "true");
+              loadCheckBox( input );
+              $(input).on("click", function(){
+                var checkBoxId = $(input).attr("id");
+                var checkBoxValue = $(input).attr("checked");
+                if(checkBoxValue == "checked"){
+                  localStorage.setItem(formId + "." + checkBoxId, "true");
                 } else {
-                  localStorage.setItem(formId + "." + elementId, "false");
+                  localStorage.setItem(formId + "." + checkBoxId, "false");
                 }
               });
             break;
@@ -82,52 +82,52 @@
             case "radio":
               // TODO : Could be improved, this will be called once
               // for every option, It only need to be called once.
-              loadRadio( element );
-              $(element).on("click", function(){
-                var elementId = $(element).attr("name");
-                var elementValue = $(element).attr("id");
-                localStorage.setItem(formId + "." + elementId, elementValue);
+              loadRadio( input );
+              $(input).on("click", function(){
+                var radioName = $(input).attr("name");
+                var radioId = $(input).attr("id");
+                localStorage.setItem(formId + "." + radioName, radioId);
               });
             break;
           }
         }
       );
 
-      $(element).find("textarea").each(
-        function(index, element) {
-          loadTextArea( element );
-          $(element).on("blur", function(){
-            var elementId = $(element).attr("id");
-            var elementValue = $(element).attr("value");
-            console.log(elementValue);
-            localStorage.setItem(formId + "." + elementId, elementValue);
+      $(possibleFormElement).find("textarea").each(
+        function(index, textArea) {
+          loadTextArea( textArea );
+          $(textArea).on("blur", function(){
+            var textAreaId = $(textArea).attr("id");
+            var textAreaValue = $(textArea).attr("value");
+            console.log(textAreaValue);
+            localStorage.setItem(formId + "." + textAreaId, textAreaValue);
           });
         }
       );
 
-      $(element).find("select").each(
-        function(index, element) {
-          if($(element).attr("multiple") === undefined){
+      $(possibleFormElement).find("select").each(
+        function(index, select) {
+          if($(select).attr("multiple") === undefined){
 
-            loadSelect(element);
-            $(element).on("change", function(){
-              var elementId = $(element).attr("id");
-              $(element).find("option:selected").each( function(index, element){
-                var elementValue = $(element).attr("value");
-                localStorage.setItem(formId + "." + elementId, elementValue);
+            loadSelect(select);
+            $(select).on("change", function(){
+              var selectId = $(select).attr("id");
+              $(select).find("option:selected").each( function(index, select){
+                var selectedValue = $(select).attr("value");
+                localStorage.setItem(formId + "." + selectId, selectedValue);
               });
             });
 
           } else {
 
-            loadMultipleSelect(element);
-            $(element).on("change", function(){
-              var elementId = $(element).attr("id");
-              var elementValue = [];
-              $(element).find("option:selected").each( function(index, element){
-                elementValue.push($(element).attr("value"));
+            loadMultipleSelect(select);
+            $(select).on("change", function(){
+              var multipleSelectId = $(select).attr("id");
+              var multipleSelectValues = [];
+              $(select).find("option:selected").each( function(index, select){
+                multipleSelectValues.push($(select).attr("value"));
               });
-              localStorage.setItem(formId + "." + elementId, JSON.stringify(elementValue));
+              localStorage.setItem(formId + "." + multipleSelectId, JSON.stringify(multipleSelectValues));
             });
 
           }
