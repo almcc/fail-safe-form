@@ -22,6 +22,7 @@ Supported form elements so far
  - Range input
  - Search input
  - Telephone input
+ - Time input
  - URL input
  - Week input
 
@@ -29,7 +30,7 @@ Still to come ...
 -----------------
 
  - File input
- - Time input
+
 
 Future Plans
 ------------
