@@ -26,12 +26,6 @@ Supported form elements so far
  - URL input
  - Week input
 
-Still to come ...
------------------
-
- - File input
-
-
 Future Plans
 ------------
 
